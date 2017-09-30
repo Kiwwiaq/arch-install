@@ -31,7 +31,7 @@ sed -i "s/^# %sudo/%sudo/" /etc/sudoers
 echo "Creating user..."
 echo "Select username: "
 read USER
-zfs create rpool/home/${USER}
+zfs create -o mountpoint=/home/${USER} rpool/home/${USER}
 useradd -G sudo ${USER}
 cp /etc/skel/.bash* /home/${USER}
 chmod 700 /home/${USER}
