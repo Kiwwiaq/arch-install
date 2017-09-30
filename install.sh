@@ -66,7 +66,7 @@ pacman -Syy
 
 # Install the base OS
 echo "Installing base os..."
-pacstrap /mnt base base-devel zfs-linux refind-efi wget networkmanager
+pacstrap /mnt base base-devel zfs-linux refind-efi wget git networkmanager
 
 # Generate the fstab file, comment all vdevs except ESP and swap entries, correct the swap entry
 echo "Generating /etc/fstab file..."
