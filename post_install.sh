@@ -31,13 +31,13 @@ sed -i "s/^# %sudo/%sudo/" /etc/sudoers
 echo "Creating user..."
 echo "Select username: "
 read USERNAME
-zfs create rpool/home/${USER}
-useradd -G sudo kiwwiaq
-cp /etc/skel/.bash* /home/kiwwiaq
-chmod 700 /home/kiwwiaq
-chown -R kiwwiaq:kiwwiaq /home/kiwwiaq
+zfs create rpool/home/${USERNAME}
+useradd -G sudo ${USERNAME}
+cp /etc/skel/.bash* /home/${USERNAME}
+chmod 700 /home/${USERNAME}
+chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
 
-passwd kiwwiaq
+passwd ${USERNAME}
 
 # Initial configuration is done
 echo "Basic OS configuration is complete. Reboot..."
