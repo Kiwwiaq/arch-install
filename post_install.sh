@@ -41,3 +41,4 @@ passwd ${USER}
 
 # Initial configuration is done
 echo "Basic OS configuration is complete. Reboot..."
+

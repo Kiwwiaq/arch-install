@@ -132,3 +132,4 @@ zpool export rpool
 
 # Installation is done
 echo "OS install is complete. Reboot..."
+
