@@ -58,7 +58,7 @@ printf "[archzfs]\nServer = http://archzfs.com/\$repo/x86_64" >> /etc/pacman.con
 echo "Refreshing signatures..."
 pacman-key -r F75D9D76
 pacman-key --lsign-key F75D9D76
-#pacman-key --refresh-keys
+pacman-key --refresh-keys
 
 # Refresh repositories
 echo "Refreshing repositories..."
