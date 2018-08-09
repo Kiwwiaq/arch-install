@@ -9,6 +9,7 @@ DISK="/dev/${DISK}"
 
 # Update the system clock
 echo "Updating system time..."
+timedatectl set-timezone Europe/Bratislava
 timedatectl set-ntp true
 
 # Wipe selected disk, if SSD
