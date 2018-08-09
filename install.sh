@@ -50,7 +50,7 @@ swapon /dev/zvol/rpool/swap
 echo "Resfreshing package repositories..."
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.old
 #rankmirrors -n 2 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
-#echo "Server = https://archive.archlinux.org/repos/2017/04/18/\$repo/os/\$arch/" > /etc/pacman.d/mirrorlist
+echo "Server = https://archive.archlinux.org/repos/2018/08/08/\$repo/os/\$arch/" > /etc/pacman.d/mirrorlist
 # ZFS repository
 printf "[archzfs]\nServer = http://archzfs.com/\$repo/x86_64" >> /etc/pacman.conf
 
