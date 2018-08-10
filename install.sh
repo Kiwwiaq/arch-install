@@ -10,6 +10,7 @@ DISK="/dev/${DISK}"
 # Update the system clock
 echo "Updating system time..."
 timedatectl set-ntp true
+export TZ="/usr/share/zoneinfo/Europe/Bratislava"
 
 # Wipe selected disk, if SSD
 #echo "Formating disk ${DISK}..."
