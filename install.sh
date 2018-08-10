@@ -112,7 +112,7 @@ echo "Installing boot manager..."
 arch-chroot /mnt refind-install
 # Get ZFS driver for UEFI to recognize ZFS dataset - from http://efi.akeo.ie/
 mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64
-wget http://efi.akeo.ie/downloads/efifs-1.1/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/
+wget http://efi.akeo.ie/downloads/efifs-latest/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/
 # Add dirrectory to auto scan list for automatic menu creation
 sed -i "/^#also_scan_dirs/a also_scan_dirs +,/ROOT/arch/@/boot" /mnt/boot/efi/EFI/refind/refind.conf
 # Update auto menu entry
