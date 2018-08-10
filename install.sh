@@ -10,7 +10,7 @@ DISK="/dev/${DISK}"
 # Update the system clock
 echo "Updating system time..."
 timedatectl set-ntp true
-export TZ="/usr/share/zoneinfo/Europe/Bratislava"
+#export TZ="/usr/share/zoneinfo/Europe/Bratislava"
 
 # Wipe selected disk, if SSD
 #echo "Formating disk ${DISK}..."
@@ -58,8 +58,8 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.old
 # Refresh signatures
 echo "Refreshing signatures..."
 pacman-key --refresh-keys
-pacman-key -r F75D9D76
-pacman-key --lsign-key F75D9D76
+#pacman-key -r F75D9D76
+#pacman-key --lsign-key F75D9D76
 
 
 # Refresh repositories
