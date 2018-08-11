@@ -21,11 +21,14 @@ timedatectl set-ntp true
 # TRIM not implemented yet
 # For HDD and overprovisioned SSD only
 echo "Creating partition table on ${DISK}..."
-parted -s -a optimal ${DISK} mklabel gpt
+#parted -s -a optimal ${DISK} mklabel gpt
+parted -s -a optimal /dev/sda mklabel gpt
+parted -s -a optimal /dev/sdb mklabel gpt
 
 # Create ZFS root pool and vdevs
 echo "Creating ZFS root pool and vdevs..."
-zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none ${POOL} ${DISK}
+#zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none ${POOL} ${DISK}
+zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none ${POOL} /dev/sda /dev/sdb
 zfs create -o mountpoint=none ${POOL}/ROOT
 zfs create -o mountpoint=/ ${POOL}/ROOT/arch
 zfs create -o mountpoint=none ${POOL}/home
