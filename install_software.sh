@@ -9,9 +9,9 @@ wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz
 tar -zxvf cower.tar.gz
 tar -zxvf pacaur.tar.gz
 cd /home/kiwwiaq/cower
-makepkg -scri
+makepkg --noconfirm -scri
 cd /home/kiwwiaq/pacaur
-makepkg -scri
+makepkg --noconfirm -scri
 
 # Install display and window manager 
 echo "Installing display and window manager..."
