@@ -1,6 +1,8 @@
 #!/bin/bash
 clear
 
+POOL="testpool"
+
 echo "Disks present on the system:"
 lsscsi
 echo -n "Select a disk: "
@@ -23,15 +25,15 @@ parted -s -a optimal ${DISK} mklabel gpt
 
 # Create ZFS root pool and vdevs
 echo "Creating ZFS root pool and vdevs..."
-zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none testpool ${DISK}
-zfs create -o mountpoint=none testpool/ROOT
-zfs create -o mountpoint=/ testpool/ROOT/arch
-zfs create -o mountpoint=none testpool/home
+zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none ${POOL} ${DISK}
+zfs create -o mountpoint=none ${POOL}/ROOT
+zfs create -o mountpoint=/ ${POOL}/ROOT/arch
+zfs create -o mountpoint=none ${POOL}/home
 
 # Import ZFS root pool to /mnt
 echo "Importing ZFS root pool to /mnt..."
-zpool export testpool
-zpool import -R /mnt testpool
+zpool export ${POOL}
+zpool import -R /mnt ${POOL}
 
 # Create and mount the ESP partition
 echo "Creating and mounting ESP partition ..."
@@ -41,9 +43,9 @@ mount ${DISK}9 /mnt/boot/efi
 
 # Create swap space
 echo "Creating swap..."
-zfs create -V 1G -b 4096 testpool/swap
-mkswap -f /dev/zvol/testpool/swap
-swapon /dev/zvol/testpool/swap
+zfs create -V 1G -b 4096 ${POOL}/swap
+mkswap -f /dev/zvol/${POOL}/swap
+swapon /dev/zvol/${POOL}/swap
 
 # Manage repositories
 # Arch repository
@@ -70,8 +72,8 @@ pacstrap /mnt base base-devel zfs-linux grub efibootmgr wget git networkmanager
 # Generate the fstab file, comment all vdevs except ESP and swap entries, correct the swap entry
 echo "Generating /etc/fstab file..."
 genfstab -p /mnt >> /mnt/etc/fstab
-sed -i "s/^testpool/#testpool/" /mnt/etc/fstab
-sed -i "s/zd0/zvol\/testpool\/swap/" /mnt/etc/fstab
+sed -i "s/^${POOL}/#${POOL}/" /mnt/etc/fstab
+sed -i "s/zd0/zvol\/${POOL}\/swap/" /mnt/etc/fstab
 
 # Set hostname
 echo "Setting hostname..."
@@ -92,10 +94,10 @@ arch-chroot /mnt locale-gen
 echo "Create root password..."
 arch-chroot /mnt passwd
 
-# ZFS testpool boot preparation
+# ZFS ${POOL} boot preparation
 echo "Preparing root pool..."
-arch-chroot /mnt zpool set cachefile=/etc/zfs/zpool.cache testpool
-arch-chroot /mnt zpool set bootfs=testpool/ROOT/arch testpool
+arch-chroot /mnt zpool set cachefile=/etc/zfs/zpool.cache ${POOL}
+arch-chroot /mnt zpool set bootfs=${POOL}/ROOT/arch ${POOL}
 
 # Enable neccessary services at startup
 echo "Enabling neccessary services at startup..."
@@ -106,9 +108,9 @@ arch-chroot /mnt systemctl enable NetworkManager.service
 
 # Install boot manager to ESP
 echo "Installing boot manager..."
-arch-chroot /mnt ZPOOL_VDEV_NAME_PATH=1 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+arch-chroot /mnt /bin/bash -c "ZPOOL_VDEV_NAME_PATH=1 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB"
 # Generate GRUB config
-arch-chroot /mnt ZPOOL_VDEV_NAME_PATH=1 grub-mkconfig -o /boot/grub/grub.cfg
+arch-chroot /mnt /bin/bash -c "ZPOOL_VDEV_NAME_PATH=1 grub-mkconfig -o /boot/grub/grub.cfg"
 
 # Refresh RAM disk
 echo "Refreshing RAM disk..."
@@ -117,12 +119,12 @@ sed -i "/^HOOKS=/c HOOKS=\"base udev autodetect modconf block keyboard zfs files
 # Create RAM disk
 arch-chroot /mnt mkinitcpio -p linux
 
-# Umount and export testpool
+# Umount and export ${POOL}
 echo "Unmounting root pool..."
 umount /mnt/boot/efi
-swapoff /dev/zvol/testpool/swap
+swapoff /dev/zvol/${POOL}/swap
 zfs umount -a
-zpool export testpool
+zpool export ${POOL}
 
 # Installation is done
 echo "OS install is complete. Reboot..."

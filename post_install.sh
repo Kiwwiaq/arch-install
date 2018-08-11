@@ -24,6 +24,11 @@ sed -i 's/^#FallbackNTP/FallbackNTP/' /etc/systemd/timesyncd.conf
 timedatectl set-timezone Europe/Bratislava
 timedatectl set-ntp true
 
+# ZFS repository
+printf "[archzfs]\nServer = http://archzfs.com/\$repo/x86_64" >> /etc/pacman.conf
+pacman-key -r 0ee7a126
+pacman-key --lsign-key 0ee7a126
+
 # Update sudo groups
 echo "Updating sudo groups..."
 groupadd sudo
