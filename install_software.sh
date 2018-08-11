@@ -79,6 +79,9 @@ sudo wget http://kiwwiaq.sk/arch/local.conf -P /etc/fonts/
 sudo systemctl enable lightdm.service
 sudo systemctl enable numLockOnTty.service
 
+# Gnome terminal fix
+sudo locale-gen
+sudo localectl set-locale LANG="en_US.UTF-8"
 #todo
 # pop sound
 # hybernation
