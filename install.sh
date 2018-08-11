@@ -24,16 +24,16 @@ parted -s -a optimal ${DISK} mklabel gpt
 
 # Create ZFS root pool and vdevs
 echo "Creating ZFS root pool and vdevs..."
-#zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none rpool ${DISK}
-zpool create -f -O atime=off -o feature@lz4_compress=disabled -o feature@encryption=disabled -o feature@multi_vdev_crash_dump=disabled -o feature@large_dnode=disabled -o feature@sha512=disabled -o feature@skein=disabled -o feature@edonr=disabled -O mountpoint=none rpool ${DISK}
-zfs create -o mountpoint=none rpool/ROOT
-zfs create -o mountpoint=/ rpool/ROOT/arch
-zfs create -o mountpoint=none rpool/home
+#zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none testpool ${DISK}
+zpool create -f -O atime=off -o feature@lz4_compress=disabled -o feature@encryption=disabled -o feature@multi_vdev_crash_dump=disabled -o feature@large_dnode=disabled -o feature@sha512=disabled -o feature@skein=disabled -o feature@edonr=disabled -O mountpoint=none testpool ${DISK}
+zfs create -o mountpoint=none testpool/ROOT
+zfs create -o mountpoint=/ testpool/ROOT/arch
+zfs create -o mountpoint=none testpool/home
 
 # Import ZFS root pool to /mnt
 echo "Importing ZFS root pool to /mnt..."
-zpool export rpool
-zpool import -R /mnt rpool
+zpool export testpool
+zpool import -R /mnt testpool
 
 # Create and mount the ESP partition
 echo "Creating and mounting ESP partition ..."
@@ -43,9 +43,9 @@ mount ${DISK}9 /mnt/boot/efi
 
 # Create swap space
 echo "Creating swap..."
-zfs create -V 1G -b 4096 rpool/swap
-mkswap -f /dev/zvol/rpool/swap
-swapon /dev/zvol/rpool/swap
+zfs create -V 1G -b 4096 testpool/swap
+mkswap -f /dev/zvol/testpool/swap
+swapon /dev/zvol/testpool/swap
 
 # Manage repositories
 # Arch repository
@@ -74,8 +74,8 @@ pacstrap /mnt base base-devel zfs-linux refind-efi wget git networkmanager
 # Generate the fstab file, comment all vdevs except ESP and swap entries, correct the swap entry
 echo "Generating /etc/fstab file..."
 genfstab -p /mnt >> /mnt/etc/fstab
-sed -i "s/^rpool/#rpool/" /mnt/etc/fstab
-sed -i "s/zd0/zvol\/rpool\/swap/" /mnt/etc/fstab
+sed -i "s/^testpool/#testpool/" /mnt/etc/fstab
+sed -i "s/zd0/zvol\/testpool\/swap/" /mnt/etc/fstab
 
 # Set hostname
 echo "Setting hostname..."
@@ -96,10 +96,10 @@ arch-chroot /mnt locale-gen
 echo "Create root password..."
 arch-chroot /mnt passwd
 
-# ZFS rpool boot preparation
+# ZFS testpool boot preparation
 echo "Preparing root pool..."
-arch-chroot /mnt zpool set cachefile=/etc/zfs/zpool.cache rpool
-arch-chroot /mnt zpool set bootfs=rpool/ROOT/arch rpool
+arch-chroot /mnt zpool set cachefile=/etc/zfs/zpool.cache testpool
+arch-chroot /mnt zpool set bootfs=testpool/ROOT/arch testpool
 
 # Enable neccessary services at startup
 echo "Enabling neccessary services at startup..."
@@ -126,12 +126,12 @@ sed -i "/^HOOKS=/c HOOKS=\"base udev autodetect modconf block keyboard zfs files
 # Create RAM disk
 arch-chroot /mnt mkinitcpio -p linux
 
-# Umount and export rpool
+# Umount and export testpool
 echo "Unmounting root pool..."
 umount /mnt/boot/efi
-swapoff /dev/zvol/rpool/swap
+swapoff /dev/zvol/testpool/swap
 zfs umount -a
-zpool export rpool
+zpool export testpool
 
 # Installation is done
 echo "OS install is complete. Reboot..."
