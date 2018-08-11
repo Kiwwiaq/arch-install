@@ -10,7 +10,6 @@ DISK="/dev/${DISK}"
 # Update the system clock
 echo "Updating system time..."
 timedatectl set-ntp true
-#export TZ="/usr/share/zoneinfo/Europe/Bratislava"
 
 # Wipe selected disk, if SSD
 #echo "Formating disk ${DISK}..."
@@ -25,7 +24,7 @@ parted -s -a optimal ${DISK} mklabel gpt
 # Create ZFS root pool and vdevs
 echo "Creating ZFS root pool and vdevs..."
 #zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none testpool ${DISK}
-zpool create -f -O atime=off -o feature@lz4_compress=disabled -o feature@multi_vdev_crash_dump=disabled -o feature@large_dnode=disabled -o feature@sha512=disabled -o feature@skein=disabled -o feature@edonr=disabled testpool ${DISK}
+zpool create -f -o feature@async_destroy=disabled -o feature@empty_bpobj=disabled -o feature@lz4_compress=disabled -o feature@multi_vdev_crash_dump=disabled -o feature@spacemap_histogram=disabled -o feature@enabled_txg=disabled -o feature@hole_birth=disabled -o feature@extensible_dataset=disabled -o feature@embedded_data=disabled -o feature@bookmarks=disabled -o feature@filesystem_limits=disabled -o feature@large_blocks=disabled -o feature@large_dnode=disabled -o feature@sha512=disabled -o feature@skein=disabled -o feature@edonr=disabled -o feature@userobj_accounting=disabled -o mountpoint=none testpool ${DISK}
 zfs create -o mountpoint=none testpool/ROOT
 zfs create -o mountpoint=/ testpool/ROOT/arch
 zfs create -o mountpoint=none testpool/home
@@ -114,11 +113,12 @@ echo "Installing boot manager..."
 arch-chroot /mnt refind-install
 #arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 # Get ZFS driver for UEFI to recognize ZFS dataset - from http://efi.akeo.ie/
-#mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/
+mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/k
 mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/1
 mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/11
 mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/12
 mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/13
+wget http://kiwwiaq.sk/arch/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/k
 wget http://efi.akeo.ie/downloads/efifs-1.0/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/1
 wget http://efi.akeo.ie/downloads/efifs-1.1/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/11
 wget http://efi.akeo.ie/downloads/efifs-1.2/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/12
