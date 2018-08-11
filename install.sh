@@ -24,7 +24,8 @@ parted -s -a optimal ${DISK} mklabel gpt
 # Create ZFS root pool and vdevs
 echo "Creating ZFS root pool and vdevs..."
 #zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none testpool ${DISK}
-zpool create -f -o feature@async_destroy=disabled -o feature@empty_bpobj=disabled -o feature@lz4_compress=disabled -o feature@multi_vdev_crash_dump=disabled -o feature@spacemap_histogram=disabled -o feature@enabled_txg=disabled -o feature@hole_birth=disabled -o feature@extensible_dataset=disabled -o feature@embedded_data=disabled -o feature@bookmarks=disabled -o feature@filesystem_limits=disabled -o feature@large_blocks=disabled -o feature@large_dnode=disabled -o feature@sha512=disabled -o feature@skein=disabled -o feature@edonr=disabled -o feature@userobj_accounting=disabled -O mountpoint=none testpool ${DISK}
+#zpool create -f -o feature@async_destroy=disabled -o feature@empty_bpobj=disabled -o feature@lz4_compress=disabled -o feature@multi_vdev_crash_dump=disabled -o feature@spacemap_histogram=disabled -o feature@enabled_txg=disabled -o feature@hole_birth=disabled -o feature@extensible_dataset=disabled -o feature@embedded_data=disabled -o feature@bookmarks=disabled -o feature@filesystem_limits=disabled -o feature@large_blocks=disabled -o feature@large_dnode=disabled -o feature@sha512=disabled -o feature@skein=disabled -o feature@edonr=disabled -o feature@userobj_accounting=disabled -O mountpoint=none testpool ${DISK}
+zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none testpool ${DISK}
 zfs create -o mountpoint=none testpool/ROOT
 zfs create -o mountpoint=/ testpool/ROOT/arch
 zfs create -o mountpoint=none testpool/home
@@ -110,26 +111,26 @@ arch-chroot /mnt systemctl enable NetworkManager.service
 
 # Install boot manager to ESP
 echo "Installing boot manager..."
-arch-chroot /mnt refind-install
-#arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+#arch-chroot /mnt refind-install
+arch-chroot /mnt ZPOOL_VDEV_NAME_PATH=1 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 # Get ZFS driver for UEFI to recognize ZFS dataset - from http://efi.akeo.ie/
 mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/k
-mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/1
-mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/11
-mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/12
-mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/13
+#mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/1
+#mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/11
+#mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/12
+#mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64/13
 wget http://kiwwiaq.sk/arch/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/k
-wget http://efi.akeo.ie/downloads/efifs-1.0/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/1
-wget http://efi.akeo.ie/downloads/efifs-1.1/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/11
-wget http://efi.akeo.ie/downloads/efifs-1.2/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/12
-wget http://efi.akeo.ie/downloads/efifs-1.3/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/13
+#wget http://efi.akeo.ie/downloads/efifs-1.0/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/1
+#wget http://efi.akeo.ie/downloads/efifs-1.1/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/11
+#wget http://efi.akeo.ie/downloads/efifs-1.2/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/12
+#wget http://efi.akeo.ie/downloads/efifs-1.3/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/13
 #wget http://efi.akeo.ie/downloads/efifs-latest/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/
 # Add dirrectory to auto scan list for automatic menu creation
-sed -i "/^#also_scan_dirs/a also_scan_dirs +,/ROOT/arch/@/boot" /mnt/boot/efi/EFI/refind/refind.conf
+#sed -i "/^#also_scan_dirs/a also_scan_dirs +,/ROOT/arch/@/boot" /mnt/boot/efi/EFI/refind/refind.conf
 # Update auto menu entry
-printf "\"Boot with standard options\"\t\"rw zfs=bootfs\"\n\"Boot to single-user mode\"\t\"rw zfs=bootfs single\"" > /mnt/boot/refind_linux.conf
+#printf "\"Boot with standard options\"\t\"rw zfs=bootfs\"\n\"Boot to single-user mode\"\t\"rw zfs=bootfs single\"" > /mnt/boot/refind_linux.conf
 # Generate GRUB config
-#arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+arch-chroot /mnt ZPOOL_VDEV_NAME_PATH=1 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Refresh RAM disk
 echo "Refreshing RAM disk..."
