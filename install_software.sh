@@ -65,7 +65,7 @@ echo "Installing other tools..."
 #ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
 #ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
 #https://bbs.archlinux.org/viewtopic.php?id=221915
-wget http://kiwwiaq.sk/arch/local.conf -P /etc/fonts/
+sudo wget http://kiwwiaq.sk/arch/local.conf -P /etc/fonts/
 
 # Themes
 #wget adapta-color-git
