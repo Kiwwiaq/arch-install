@@ -25,7 +25,7 @@ parted -s -a optimal ${DISK} mklabel gpt
 # Create ZFS root pool and vdevs
 echo "Creating ZFS root pool and vdevs..."
 #zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none rpool ${DISK}
-zpool create -f -O atime=off -o feature@encryption=disabled -o feature@multi_vdev_crash_dump=disabled -o feature@large_dnode=disabled -o feature@sha512=disabled -o feature@skein=disabled -o feature@edonr=disabled -O mountpoint=none rpool ${DISK}
+zpool create -f -O atime=off -o feature@lz4_compress=disabled -o feature@encryption=disabled -o feature@multi_vdev_crash_dump=disabled -o feature@large_dnode=disabled -o feature@sha512=disabled -o feature@skein=disabled -o feature@edonr=disabled -O mountpoint=none rpool ${DISK}
 zfs create -o mountpoint=none rpool/ROOT
 zfs create -o mountpoint=/ rpool/ROOT/arch
 zfs create -o mountpoint=none rpool/home
