@@ -69,7 +69,8 @@ pacman -Syy
 
 # Install the base OS
 echo "Installing base os..."
-pacstrap /mnt base base-devel zfs-linux refind-efi wget git networkmanager
+#pacstrap /mnt base base-devel zfs-linux refind-efi wget git networkmanager
+pacstrap /mnt base base-devel zfs-linux grub efibootmgr wget git networkmanager
 
 # Generate the fstab file, comment all vdevs except ESP and swap entries, correct the swap entry
 echo "Generating /etc/fstab file..."
@@ -110,14 +111,17 @@ arch-chroot /mnt systemctl enable NetworkManager.service
 
 # Install boot manager to ESP
 echo "Installing boot manager..."
-arch-chroot /mnt refind-install
+#arch-chroot /mnt refind-install
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB
 # Get ZFS driver for UEFI to recognize ZFS dataset - from http://efi.akeo.ie/
-mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64
-wget http://efi.akeo.ie/downloads/efifs-latest/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/
+#mkdir -p /mnt/boot/efi/EFI/refind/drivers_x64
+#wget http://efi.akeo.ie/downloads/efifs-latest/x64/zfs_x64.efi -P /mnt/boot/efi/EFI/refind/drivers_x64/
 # Add dirrectory to auto scan list for automatic menu creation
-sed -i "/^#also_scan_dirs/a also_scan_dirs +,/ROOT/arch/@/boot" /mnt/boot/efi/EFI/refind/refind.conf
+#sed -i "/^#also_scan_dirs/a also_scan_dirs +,/ROOT/arch/@/boot" /mnt/boot/efi/EFI/refind/refind.conf
 # Update auto menu entry
-printf "\"Boot with standard options\"\t\"rw zfs=bootfs\"\n\"Boot to single-user mode\"\t\"rw zfs=bootfs single\"" > /mnt/boot/refind_linux.conf
+#printf "\"Boot with standard options\"\t\"rw zfs=bootfs\"\n\"Boot to single-user mode\"\t\"rw zfs=bootfs single\"" > /mnt/boot/refind_linux.conf
+# Generate GRUB config
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 # Refresh RAM disk
 echo "Refreshing RAM disk..."
