@@ -132,3 +132,4 @@ zpool export ${POOL}
 # Installation is done
 echo "OS install is complete. Reboot..."
 
+#!/bin/bash

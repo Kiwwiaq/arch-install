@@ -24,7 +24,7 @@ pacaur --noconfirm --noedit -S enpass-bin
 
 # Graphics category software
 echo "Installing Graphics software..."
-sudo pacman --noconfirm --needed -S gtumb
+sudo pacman --noconfirm --needed -S gthumb
 
 # Internet category software
 echo "Installing Internet software..."
@@ -39,7 +39,7 @@ pacaur --noconfirm --noedit -S hunspell-sk
 # Sound & Video category software
 echo "Installing Sound & Video software..."
 sudo pacman --noconfirm --needed -S rhythmbox 
-pacaur --noconfirm --noedit -S xplayer
+pacaur --noconfirm --noedit -S xplayer plex-media-player-git
 
 # Administration category software
 echo "Installing Administration software..."

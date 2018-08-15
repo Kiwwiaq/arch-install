@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-POOL="testpool"
+POOL="rpool"
 
 # Create correct hostid
 echo "Creating hostid..."
@@ -26,8 +26,8 @@ timedatectl set-ntp true
 
 # ZFS repository
 printf "[archzfs]\nServer = http://archzfs.com/\$repo/x86_64" >> /etc/pacman.conf
-pacman-key -r 0ee7a126
-pacman-key --lsign-key 0ee7a126
+pacman-key -r F75D9D76
+pacman-key --lsign-key F75D9D76
 
 # Update sudo groups
 echo "Updating sudo groups..."
