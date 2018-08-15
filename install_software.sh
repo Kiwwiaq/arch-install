@@ -47,7 +47,7 @@ sudo pacman --noconfirm --needed -S gnome-terminal guake gnome-disk-utility
 
 # Codecs
 echo "Installing additional codecs..."
-sudo pacman --noconfirm --needed -S gst-plugins-ugly gst-plugins-bad gst-libav flac flashplugin
+sudo pacman --noconfirm --needed -S gst-plugins-ugly gst-plugins-bad gst-libav flac
 
 # Common software
 echo "Installing common software..."
