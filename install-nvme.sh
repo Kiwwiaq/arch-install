@@ -3,32 +3,22 @@ clear
 
 POOL="rpool"
 
-#echo "Disks present on the system:"
-#lsscsi
-#echo -n "Select a disk: "
-#read DISK
-#DISK="/dev/${DISK}"
-
 # Update the system clock
 echo "Updating system time..."
 timedatectl set-ntp true
 
-# Wipe selected disk, if SSD
-echo "Formating nvme disks..."
+# Wipe NVMe disks
+echo "Formating NVMe disks..."
 blkdiscard /dev/nvme0n1
 blkdiscard /dev/nvme1n1
 
 # Create partition table
-# TRIM not implemented yet
-# For HDD and overprovisioned SSD only
-echo "Creating partition table on ${DISK}..."
-#parted -s -a optimal ${DISK} mklabel gpt
+echo "Creating partition table on NVME disks..."
 parted -s -a optimal /dev/nvme0n1 mklabel gpt
 parted -s -a optimal /dev/nvme1n1 mklabel gpt
 
 # Create ZFS root pool and vdevs
 echo "Creating ZFS root pool and vdevs..."
-#zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none ${POOL} ${DISK}
 zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none ${POOL} /dev/nvme0n1 /dev/nvme1n1
 zfs create -o mountpoint=none ${POOL}/ROOT
 zfs create -o mountpoint=/ ${POOL}/ROOT/arch
@@ -42,6 +32,7 @@ zpool import -R /mnt ${POOL}
 # Create and mount the ESP partition
 echo "Creating and mounting ESP partition ..."
 mkfs.vfat /dev/nvme0n1p9
+fatlabel /dev/nvme0n1p9 EFI
 mkdir -p /mnt/boot/efi
 mount /dev/nvme0n1p9 /mnt/boot/efi
 
@@ -60,7 +51,7 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.old
 
 # Refresh signatures
 echo "Refreshing signatures..."
-#pacman-key --refresh-keys
+pacman-key --refresh-keys
 #pacman-key -r F75D9D76
 #pacman-key --lsign-key F75D9D76
 
@@ -131,5 +122,5 @@ zfs umount -a
 zpool export ${POOL}
 
 # Installation is done
-echo "OS install is complete. Reboot..."
+echo "Base OS install is complete. Reboot..."
 
