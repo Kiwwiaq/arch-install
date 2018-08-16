@@ -15,7 +15,7 @@ makepkg --noconfirm -scri
 
 # Install display and window manager 
 echo "Installing display and window manager..."
-sudo pacman --noconfirm --needed -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
+sudo pacman --noconfirm --needed -S xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
 
 # Accessories category software
 echo "Installing Accessories software..."
@@ -60,18 +60,20 @@ pacaur --noconfirm --noedit -S systemd-numlockontty nvme-cli
 echo "Installing other tools..."
 #pacman --noconfirm -S doublecmd-gtk2 gksu
 
+# Themes
+# GTK and Cinnamon themes
+# https://github.com/ivan-krasilnikov/adapta-gtk-theme-colorpack# Icons
+#sudo pacman --noconfirm --needed -S papirus-icon-theme
 # Fonts
-# https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671
 #ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
 #ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
-#https://bbs.archlinux.org/viewtopic.php?id=221915
-sudo wget http://kiwwiaq.sk/arch/local.conf -P /etc/fonts/
-
-# Themes
-#wget adapta-color-git
+#sudo wget http://kiwwiaq.sk/arch/local.conf -P /etc/fonts/
+# https://bbs.archlinux.org/viewtopic.php?id=221915
+# https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671
 #sudo -u kiwwiaq -H sh -c "pacaur -S noto-fonts"
 
 # easytag flacon
+
 # KVM
 #sudo -u kiwwiaq -H sh -c "pacaur -S libvirt-zfs ovmf-git"
 #pacman --noconfirm -S qemu virt-manager
@@ -82,6 +84,7 @@ sudo systemctl enable numLockOnTty.service
 # Gnome terminal fix
 sudo locale-gen
 sudo localectl set-locale LANG="en_US.UTF-8"
+
 #todo
 # pop sound
 # hybernation
