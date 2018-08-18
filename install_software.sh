@@ -58,7 +58,7 @@ pacaur --noconfirm --noedit -S systemd-numlockontty nvme-cli
 # Other tools
 # gtk: doublecmd-gtk2 gksu
 echo "Installing other tools..."
-sudo pacman --noconfirm --needed -S virtualbox
+sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste
 #pacman --noconfirm -S doublecmd-gtk2 gksu
 
 # Themes
