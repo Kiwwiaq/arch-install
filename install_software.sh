@@ -58,7 +58,8 @@ pacaur --noconfirm --noedit -S systemd-numlockontty nvme-cli
 # Other tools
 # gtk: doublecmd-gtk2 gksu
 echo "Installing other tools..."
-sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste 
+sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste
+pacaur --noconfirm --noedit -S teamviewer
 #pacman --noconfirm -S doublecmd-gtk2 gksu
 
 # Themes
@@ -81,6 +82,7 @@ sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gp
 
 sudo systemctl enable lightdm.service
 sudo systemctl enable numLockOnTty.service
+sudo systemctl enable teamviewerd
 
 # Gnome terminal fix
 sudo locale-gen
