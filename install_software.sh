@@ -29,7 +29,7 @@ sudo pacman --noconfirm --needed -S gthumb
 # Internet category software
 echo "Installing Internet software..."
 sudo pacman --noconfirm --needed -S firefox thunderbird deluge
-pacaur --noconfirm --noedit -S skypeforlinux-bin
+pacaur --noconfirm --noedit -S skypeforlinux-stable-bin
 
 # Office category software
 echo "Installing Office software..."
