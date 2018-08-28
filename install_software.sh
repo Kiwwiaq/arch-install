@@ -51,14 +51,14 @@ sudo pacman --noconfirm --needed -S gst-plugins-ugly gst-plugins-bad gst-libav f
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S xdg-utils xdg-user-dirs sane lsscsi ntfs-3g unzip e2fsprogs
+sudo pacman --noconfirm --needed -S xdg-utils xdg-user-dirs sane lsscsi ntfs-3g unzip e2fsprogs openssh
 pacaur --noconfirm --noedit -S systemd-numlockontty nvme-cli 
 
 
 # Other tools
 # gtk: doublecmd-gtk2 gksu
 echo "Installing other tools..."
-sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste
+sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste 
 #pacman --noconfirm -S doublecmd-gtk2 gksu
 
 # Themes
