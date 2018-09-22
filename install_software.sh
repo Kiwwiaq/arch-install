@@ -62,6 +62,10 @@ sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gp
 pacaur --noconfirm --noedit -S teamviewer
 #pacman --noconfirm -S doublecmd-gtk2 gksu
 
+# Wine
+echo "Installing wine..."
+sudo pacman --noconfirm --needed -S wine-staging wine-mono wine_gecko
+
 # Themes
 # GTK and Cinnamon themes
 # https://github.com/ivan-krasilnikov/adapta-gtk-theme-colorpack# Icons
