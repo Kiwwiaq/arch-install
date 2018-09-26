@@ -58,7 +58,7 @@ pacaur --noconfirm --noedit -S systemd-numlockontty nvme-cli
 # Other tools
 # gtk: doublecmd-gtk2 gksu
 echo "Installing other tools..."
-sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste xorg-xrandr
+sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste xorg-xrandr gnome-keyring pygtk
 pacaur --noconfirm --noedit -S teamviewer discord
 #pacman --noconfirm -S doublecmd-gtk2 gksu
 
