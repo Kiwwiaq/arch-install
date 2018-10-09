@@ -60,7 +60,8 @@ pacaur --noconfirm --noedit -S systemd-numlockontty nvme-cli
 echo "Installing other tools..."
 sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste xorg-xrandr gnome-keyring pygtk doublec doublecmd-gtk2
 pacaur --noconfirm --noedit -S teamviewer discord
-#pacman --noconfirm -S doublecmd-gtk2 gksu
+#pacman --noconfirm -S gksu
+#pacaur --noconfirm --noedit -S whdd
 
 # Wine
 echo "Installing wine..."
