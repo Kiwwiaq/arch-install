@@ -19,7 +19,7 @@ sudo pacman --noconfirm --needed -S xorg-server lightdm lightdm-gtk-greeter ligh
 
 # Accessories category software
 echo "Installing Accessories software..."
-sudo pacman --noconfirm --needed -S gnome-calculator nautilus gedit gnome-screenshot file-roller
+sudo pacman --noconfirm --needed -S gnome-calculator nautilus gedit gnome-screenshot file-roller gnome-todo
 pacaur --noconfirm --noedit -S enpass-bin
 
 # Graphics category software
