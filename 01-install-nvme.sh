@@ -12,7 +12,7 @@ echo "Creating partition table on NVME disk..."
 parted -s -a optimal /dev/nvme0n1 mklabel gpt
 
 echo "Creating ZFS root pool and vdevs..."
-zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none rpool/dev/nvme0n1
+zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none rpool /dev/nvme0n1
 zfs create -o mountpoint=none rpool/ROOT
 zfs create -o mountpoint=/ rpool/ROOT/arch
 zfs create -o mountpoint=none rpool/home
