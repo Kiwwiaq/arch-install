@@ -85,6 +85,10 @@ echo "Refreshing RAM disk..."
 sed -i "/^HOOKS=/c HOOKS=\"base udev autodetect modconf block keyboard zfs filesystems\"" /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 
+echo "Clone repository to new OS instalation..."
+cd /mnt
+git clone http://github.com/Kiwwiaq/arch-install
+
 echo "Unmounting root pool..."
 umount /mnt/boot/efi
 swapoff /dev/zvol/rpool/swap
