@@ -3,17 +3,15 @@ clear
 
 POOL="rpool"
 
-# Create correct hostid
+# Create hostid
 echo "Creating hostid..."
-wget http://kiwwiaq.sk/arch/writehostid.c
-gcc -o writehostid writehostid.c
-./writehostid
+zgenhostid $(hostid)
 
 # Update zpool.cache
 echo "Updating /etc/zfs/zpool.cache file..."
 zpool set cachefile=/etc/zfs/zpool.cache ${POOL}
 
-# ??? Refresh RAM disk
+# Refresh RAM disk
 echo "Refreshing RAM disk..."
 mkinitcpio -p linux
 
