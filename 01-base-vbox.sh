@@ -21,10 +21,10 @@ echo "Importing ZFS root pool to /mnt..."
 zpool import -R /mnt rpool
 
 echo "Creating and mounting ESP partition ..."
-mkfs.vfat /dev/sda2
-fatlabel /dev/sda2 EFI
+mkfs.vfat /dev/sda9
+fatlabel /dev/sda9 EFI
 mkdir -p /mnt/boot/efi
-mount /dev/sda2 /mnt/boot/efi
+mount /dev/sda9 /mnt/boot/efi
 
 echo "Creating swap..."
 zfs create -V 1G -b 4096 rpool/swap
