@@ -5,14 +5,11 @@ echo "Updating system time..."
 timedatectl set-timezone Europe/Bratislava
 timedatectl set-ntp true
 
-echo "Formating NVMe disk..."
-blkdiscard /dev/nvme0n1
-
-echo "Creating partition table on NVME disk..."
-parted -s -a optimal /dev/nvme0n1 mklabel gpt
+echo "Creating new partition table on virtual disk..."
+parted -s -a optimal /dev/sda mklabel gpt
 
 echo "Creating ZFS root pool and vdevs..."
-zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none rpool /dev/nvme0n1
+zpool create -f -O compression=lz4 -O atime=off -O mountpoint=none rpool /dev/sda
 zfs create -o mountpoint=none rpool/ROOT
 zfs create -o mountpoint=/ rpool/ROOT/arch
 zfs create -o mountpoint=none rpool/home
@@ -24,13 +21,13 @@ echo "Importing ZFS root pool to /mnt..."
 zpool import -R /mnt rpool
 
 echo "Creating and mounting ESP partition ..."
-mkfs.vfat /dev/nvme0n1p9
-fatlabel /dev/nvme0n1p9 EFI
+mkfs.vfat /dev/sda2
+fatlabel /dev/sda2 EFI
 mkdir -p /mnt/boot/efi
-mount /dev/nvme0n1p9 /mnt/boot/efi
+mount /dev/sda2 /mnt/boot/efi
 
 echo "Creating swap..."
-zfs create -V 6G -b 4096 rpool/swap
+zfs create -V 1G -b 4096 rpool/swap
 mkswap -f /dev/zvol/rpool/swap
 swapon /dev/zvol/rpool/swap
 
