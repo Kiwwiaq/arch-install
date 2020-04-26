@@ -58,8 +58,9 @@ ln -sf /mnt/usr/share/zoneinfo/Europe/Bratislava /mnt/etc/localtime
 arch-chroot /mnt hwclock --systohc
 
 echo "Generating locale..."
-sed -i "s/#en_US.UTF/en_US.UTF/" /mnt/etc/locale.gen
-echo "LANG=en.US.UTF-8" > /mnt/etc/locale.conf
+#sed -i "s/#en_US.UTF/en_US.UTF/" /mnt/etc/locale.gen
+#echo "LANG=en.US.UTF-8" > /mnt/etc/locale.conf
+arch-chroot /mnt localectl set-locale LANG="en_US.UTF-8"
 arch-chroot /mnt locale-gen
 
 echo "Create root password..."

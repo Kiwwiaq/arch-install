@@ -35,14 +35,25 @@ sed -i "s/^# %sudo/%sudo/" /etc/sudoers
 # Create user
 echo "Creating user..."
 echo "Select username: "
-read USER
-zfs create -o mountpoint=/home/${USER} ${POOL}/home/${USER}
-useradd -G sudo ${USER}
-cp /etc/skel/.bash* /home/${USER}
-chmod 700 /home/${USER}
-chown -R ${USER}:${USER} /home/${USER}
+read user
+zfs create -o mountpoint=/home/${user} ${POOL}/home/${user}
+useradd -G sudo ${user}
+cp /etc/skel/.bash* /home/${user}
+chmod 700 /home/${user}
+chown -R ${user}:${user} /home/${user}
 
-passwd ${USER}
+passwd ${user}
+
+# Install AUR helper
+echo "Installing AUR helper..."
+cd /tmp
+sudo -u ${user} git clone https://aur.archlinux.org/auracle-git.git
+cd /tmp/auracle-git
+sudo -u ${user} makepkg -si 
+cd /tmp
+sudo -u ${user} git clone https://aur.archlinux.org/pacaur.git
+cd /tmp/pacaur
+sudo -u ${user} makepkg -si
 
 # Initial configuration is done
 echo "Basic OS configuration is complete. Reboot..."
