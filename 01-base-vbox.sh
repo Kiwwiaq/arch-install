@@ -27,7 +27,7 @@ mkdir -p /mnt/boot/efi
 mount /dev/sda9 /mnt/boot/efi
 
 echo "Creating swap..."
-zfs create -V 1G -b 4096 rpool/swap
+zfs create -V 1G -b $(getconf PAGESIZE) -o logbias=throughput -o sync=always -o primarycache=metadata -o com.sun:auto-snapshot=false rpool/swap
 mkswap -f /dev/zvol/rpool/swap
 swapon /dev/zvol/rpool/swap
 
