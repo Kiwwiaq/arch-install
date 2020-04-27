@@ -46,15 +46,12 @@ passwd ${user}
 
 # Install AUR helper
 echo "Installing AUR helper..."
-cd /tmp
-sudo -u ${user} git clone https://aur.archlinux.org/auracle-git.git
-cd /tmp/auracle-git
-sudo -u ${user} makepkg -si 
-cd /tmp
-sudo -u ${user} git clone https://aur.archlinux.org/pacaur.git
-cd /tmp/pacaur
-sudo -u ${user} makepkg -si
+su - ${user} -c 'git clone https://aur.archlinux.org/auracle-git.giti /tmp/auracle-git'
+su - ${user} -c 'git clone https://aur.archlinux.org/pacaur.git /tmp/pacaur'
+cd /tmp/auracle-git && su - ${user} -c 'makepkg -si'
+cd /tmp/pacaur && su - ${user} -c 'makepkg -si'
 
 # Initial configuration is done
+cd /
 echo "Basic OS configuration is complete. Reboot..."
 
