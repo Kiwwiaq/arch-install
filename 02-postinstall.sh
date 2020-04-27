@@ -46,14 +46,14 @@ passwd ${user}
 
 # Install AUR helper
 echo "Installing AUR helper..."
-su - ${user} -c 'git clone https://aur.archlinux.org/auracle-git.giti /tmp/auracle-git'
-su - ${user} -c 'git clone https://aur.archlinux.org/pacaur.git /tmp/pacaur'
-cd /tmp/auracle-git; su - ${user} -c 'makepkg -si'
-cd /tmp/pacaur; su - ${user} -c 'makepkg -si'
+sudo -u ${user} -c git clone https://aur.archlinux.org/auracle-git.giti /tmp/auracle-git
+sudo -u ${user} -c git clone https://aur.archlinux.org/pacaur.git /tmp/pacaur
+cd /tmp/auracle-git; sudo -u ${user} makepkg -si
+cd /tmp/pacaur; sudo -u ${user} makepkg -si
 cd /
 
 # Clone install scripts to user home directory
-su - ${user} -c "git clone https://github.com/Kiwwiaq/arch-install /home/${user}/arch-install"
+sudo -u ${user} git clone https://github.com/Kiwwiaq/arch-install /home/${user}/arch-install
 
 # Cleanup
 rm -r /root/arch-install
