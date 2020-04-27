@@ -3,13 +3,13 @@ clear
 
 # Install basic GUI
 echo "Installing ibasic GUI..."
-pacman --noconfirm --needed -S virtualbox-guest-utils xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
+sudo pacman --noconfirm --needed -S virtualbox-guest-utils xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
 
 # Install base software
-pacman --noconfirm --needed -S gnome-terminal
+sudo pacman --noconfirm --needed -S gnome-terminal
 
 # Enable GUI
-systemctl enable lightdm.service
+sudo systemctl enable lightdm.service
 
 # Gnome terminal fix
 sudo locale-gen
