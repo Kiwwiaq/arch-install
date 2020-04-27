@@ -48,8 +48,8 @@ passwd ${user}
 echo "Installing AUR helper..."
 su - ${user} -c 'git clone https://aur.archlinux.org/auracle-git.giti /tmp/auracle-git'
 su - ${user} -c 'git clone https://aur.archlinux.org/pacaur.git /tmp/pacaur'
-cd /tmp/auracle-git && su - ${user} -c 'makepkg -si'
-cd /tmp/pacaur && su - ${user} -c 'makepkg -si'
+cd /tmp/auracle-git; su - ${user} -c 'makepkg -si'
+cd /tmp/pacaur; su - ${user} -c 'makepkg -si'
 cd /
 
 # Clone install scripts to user home directory
