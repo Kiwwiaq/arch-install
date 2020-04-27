@@ -50,8 +50,14 @@ su - ${user} -c 'git clone https://aur.archlinux.org/auracle-git.giti /tmp/aurac
 su - ${user} -c 'git clone https://aur.archlinux.org/pacaur.git /tmp/pacaur'
 cd /tmp/auracle-git && su - ${user} -c 'makepkg -si'
 cd /tmp/pacaur && su - ${user} -c 'makepkg -si'
+cd /
+
+# Clone install scripts to user home directory
+su - ${user} -c "git clone https://github.com/Kiwwiaq/arch-install /home/${user}/arch-install"
+
+# Cleanup
+rm -r /root/arch-install
 
 # Initial configuration is done
-cd /
 echo "Basic OS configuration is complete. Reboot..."
 
