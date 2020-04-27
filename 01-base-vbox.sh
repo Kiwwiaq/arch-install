@@ -86,8 +86,7 @@ sed -i "/^HOOKS=/c HOOKS=\"base udev autodetect modconf block keyboard zfs files
 arch-chroot /mnt mkinitcpio -p linux
 
 echo "Clone repository to new OS instalation..."
-cd /mnt
-git clone http://github.com/Kiwwiaq/arch-install
+git clone http://github.com/Kiwwiaq/arch-install /mnt/root/arch-install
 
 echo "Unmounting root pool..."
 umount /mnt/boot/efi
