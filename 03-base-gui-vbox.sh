@@ -10,3 +10,7 @@ sudo pacman --noconfirm --needed -S gnome-terminal
 
 # Enable GUI
 sudo systemctl enable lightdm.service
+
+# Terminal fix
+sudo localectl set-locale LANG="en_US.UTF-8"
+sudo /mnt locale-gen
