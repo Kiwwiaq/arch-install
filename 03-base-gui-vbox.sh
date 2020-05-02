@@ -10,6 +10,9 @@ echo "Installing common software..."
 sudo pacman --noconfirm --needed -S vi vim man xdg-utils xdg-user-dirs unzip libunrar gnome-terminal
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
+# Eyecandy
+pacaur --noconfirm --noedit -S adapta-gtk-theme-colorpack
+
 # Accessories category software
 echo "Installing Accessories software..."
 sudo pacman --noconfirm --needed -S gnome-calculator nautilus gedit gnome-screenshot file-roller gnome-todo
@@ -42,3 +45,7 @@ sudo systemctl enable lightdm.service
 sudo localectl set-locale LANG="en_US.UTF-8"
 sudo locale-gen
 
+# Set themes
+gsettings set org.cinnamon.theme name 'Adapta-LightGreen'
+gsettings set org.cinnamon.desktop.interface gtk-theme 'Adapta-LightGreen'
+gsettings set org.cinnamon.desktop.wm.preferences theme 'Adapta-LightGreen'
