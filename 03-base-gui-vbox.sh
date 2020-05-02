@@ -7,7 +7,8 @@ sudo pacman --noconfirm --needed -S virtualbox-guest-utils xf86-video-vmware xor
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S xdg-utils xdg-user-dirs unzip libunrar gnome-terminal
+sudo pacman --noconfirm --needed -S vi vim man xdg-utils xdg-user-dirs unzip libunrar gnome-terminal
+pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Accessories category software
 echo "Installing Accessories software..."
