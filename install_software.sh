@@ -13,6 +13,11 @@ sudo pacman --noconfirm --needed -S guake gnome-disk-utility
 # Common software
 echo "Installing common software..."
 sudo pacman --noconfirm --needed -S sane lsscsi ntfs-3g e2fsprogs openssh 
+pacaur --noconfirm --noedit -S systemd-numlockontty
+
+# Codecs
+echo "Installing additional codecs..."
+sudo pacman --noconfirm --needed -S gst-plugins-ugly gst-plugins-bad gst-libav flac
 
 # Other tools
 # gtk: doublecmd-gtk2 gksu

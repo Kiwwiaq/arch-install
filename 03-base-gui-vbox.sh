@@ -3,12 +3,11 @@ clear
 
 # Install basic GUI
 echo "Installing ibasic GUI..."
-sudo pacman --noconfirm --needed -S virtualbox-guest-utils xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
+sudo pacman --noconfirm --needed -S virtualbox-guest-utils xf86-video-vmware xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
 
 # Common software
 echo "Installing common software..."
 sudo pacman --noconfirm --needed -S xdg-utils xdg-user-dirs unzip libunrar gnome-terminal
-pacaur --noconfirm --noedit -S systemd-numlockontty 
 
 # Accessories category software
 echo "Installing Accessories software..."
@@ -31,10 +30,6 @@ pacaur --noconfirm --noedit -S hunspell-sk
 # Audio & Video category software
 echo "Installing Sound & Video software..."
 sudo pacman --noconfirm --needed -S rhythmbox
-
-# Codecs
-echo "Installing additional codecs..."
-sudo pacman --noconfirm --needed -S gst-plugins-ugly gst-plugins-bad gst-libav flac
 
 # Administration category software
 echo "Installing Administration software..."
