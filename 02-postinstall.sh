@@ -57,6 +57,9 @@ sudo -u ${user} git clone https://github.com/Kiwwiaq/arch-install /home/${user}/
 # Cleanup
 rm -r /root/arch-install
 
+# Optimize multicore compilation
+sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j\$\(nproc\)\"/" /etc/makepkg.conf
+
 # Initial configuration is done
 echo "Basic OS configuration is complete. Reboot..."
 
