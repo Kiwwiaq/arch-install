@@ -7,7 +7,7 @@ sudo pacman --noconfirm --needed -S virtualbox-guest-utils xf86-video-vmware xor
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S vi vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal
+sudo pacman --noconfirm --needed -S vi vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Eyecandy
@@ -34,9 +34,6 @@ pacaur --noconfirm --noedit -S hunspell-sk
 # Audio & Video category software
 echo "Installing Sound & Video software..."
 sudo pacman --noconfirm --needed -S rhythmbox
-
-# Administration category software
-echo "Installing Administration software..."
 
 # Enable GUI
 sudo systemctl enable lightdm.service
