@@ -49,3 +49,5 @@ sudo locale-gen
 gsettings set org.cinnamon.theme name 'Adapta-LightGreen'
 gsettings set org.cinnamon.desktop.interface gtk-theme 'Adapta-LightGreen'
 gsettings set org.cinnamon.desktop.wm.preferences theme 'Adapta-LightGreen'
+gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/Icetwigs.jpg'
+echo -e "[greeter]\ntheme-name = Adapta-LightGreen-Eta" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
