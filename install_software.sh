@@ -33,7 +33,6 @@ sudo pacman --noconfirm --needed -S wine-staging wine-mono wine_gecko
 
 # Themes
 # GTK and Cinnamon themes
-# https://github.com/ivan-krasilnikov/adapta-gtk-theme-colorpack# Icons
 #sudo pacman --noconfirm --needed -S papirus-icon-theme
 # Fonts
 #ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
