@@ -37,7 +37,7 @@ sudo pacman --noconfirm --needed -S lollypop totem
 
 # Enable services
 sudo systemctl enable lightdm.service
-sudo systemctl enable org.cups.cupsd.service
+sudo systemctl enable org.cups.cupsd.socket
 
 # Terminal fix
 sudo localectl set-locale LANG="en_US.UTF-8"
