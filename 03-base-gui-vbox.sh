@@ -7,7 +7,7 @@ sudo pacman --noconfirm --needed -S virtualbox-guest-utils xf86-video-vmware xor
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S vi vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring
+sudo pacman --noconfirm --needed -S vi vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Eyecandy
@@ -35,8 +35,9 @@ pacaur --noconfirm --noedit -S hunspell-sk
 echo "Installing Sound & Video software..."
 sudo pacman --noconfirm --needed -S lollypop totem
 
-# Enable GUI
+# Enable services
 sudo systemctl enable lightdm.service
+sudo systemctl enable org.cups.cupsd.service
 
 # Terminal fix
 sudo localectl set-locale LANG="en_US.UTF-8"
