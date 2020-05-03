@@ -15,7 +15,7 @@ pacaur --noconfirm --noedit -S adapta-gtk-theme-colorpack
 
 # Accessories category software
 echo "Installing Accessories software..."
-sudo pacman --noconfirm --needed -S gnome-calculator nautilus gedit gnome-screenshot file-roller gnome-todo
+sudo pacman --noconfirm --needed -S gnome-calculator nautilus gedit gnome-screenshot file-roller gnome-todo brasero
 
 # Graphics category software
 echo "Installing Graphics software..."
@@ -33,7 +33,7 @@ pacaur --noconfirm --noedit -S hunspell-sk
 
 # Audio & Video category software
 echo "Installing Sound & Video software..."
-sudo pacman --noconfirm --needed -S rhythmbox
+sudo pacman --noconfirm --needed -S lollypop totem
 
 # Enable GUI
 sudo systemctl enable lightdm.service
@@ -48,3 +48,4 @@ gsettings set org.cinnamon.desktop.interface gtk-theme 'Adapta-LightGreen'
 gsettings set org.cinnamon.desktop.wm.preferences theme 'Adapta-LightGreen'
 gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/Icetwigs.jpg'
 echo -e "[greeter]\ntheme-name = Adapta-LightGreen-Eta" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+gsettings set org.gnome.Terminal.Legacy.Settings headerbar true
