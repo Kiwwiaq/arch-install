@@ -43,6 +43,9 @@ sudo systemctl enable org.cups.cupsd.socket
 sudo localectl set-locale LANG="en_US.UTF-8"
 sudo locale-gen
 
+# Set administration access
+echo -e "polkit.addAdminRule(function(action, subject) {\n\treturn [\"unix-group:sudo\"];\n});" | sudo tee /etc/polkit-1/rules.d/50-default.rules > /dev/null
+
 # Set themes
 gsettings set org.cinnamon.theme name 'Adapta-LightGreen'
 gsettings set org.cinnamon.desktop.interface gtk-theme 'Adapta-LightGreen'
