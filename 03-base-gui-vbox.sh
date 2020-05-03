@@ -7,7 +7,7 @@ sudo pacman --noconfirm --needed -S virtualbox-guest-utils xf86-video-vmware xor
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S vi vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer
+sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Eyecandy

@@ -1,18 +1,10 @@
-# Internet category software
-echo "Installing Internet software..."
-sudo pacman --noconfirm --needed -S deluge
-
 # Sound & Video category software
 echo "Installing Sound & Video software..."
 pacaur --noconfirm --noedit -S xplayer plex-media-player-git
 
-# Administration category software
-echo "Installing Administration software..."
-sudo pacman --noconfirm --needed -S guake gnome-disk-utility
-
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S sane lsscsi ntfs-3g e2fsprogs openssh 
+sudo pacman --noconfirm --needed -S sane ntfs-3g e2fsprogs 
 pacaur --noconfirm --noedit -S systemd-numlockontty
 
 # Codecs
@@ -22,10 +14,9 @@ sudo pacman --noconfirm --needed -S gst-plugins-ugly gst-plugins-bad gst-libav f
 # Other tools
 # gtk: doublecmd-gtk2 gksu
 echo "Installing other tools..."
-sudo pacman --noconfirm --needed -S virtualbox android-file-transfer gvfs-mtp gpaste xorg-xrandr gnome-keyring pygtk doublec doublecmd-gtk2
-pacaur --noconfirm --noedit -S teamviewer discord xboxdrv
+sudo pacman --noconfirm --needed -S android-file-transfer gvfs-mtp gpaste xorg-xrandr pygtk doublec doublecmd-gtk2
+pacaur --noconfirm --noedit -S xboxdrv
 #pacman --noconfirm -S gksu
-#pacaur --noconfirm --noedit -S whdd
 
 # Wine
 echo "Installing wine..."
@@ -45,11 +36,6 @@ sudo pacman --noconfirm --needed -S wine-staging wine-mono wine_gecko
 # easytag flacon
 
 sudo systemctl enable numLockOnTty.service
-sudo systemctl enable teamviewerd
-
-# Gnome terminal fix
-sudo locale-gen
-sudo localectl set-locale LANG="en_US.UTF-8"
 
 #todo
 # pop sound
