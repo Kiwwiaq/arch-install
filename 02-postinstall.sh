@@ -29,7 +29,6 @@ pacman-key --lsign-key F75D9D76
 
 # Update sudo groups
 echo "Updating sudo groups..."
-#groupadd sudo
 sed -i "s/^# %wheel/%wheel/" /etc/sudoers
 
 # Create user
@@ -38,9 +37,9 @@ echo "Select username: "
 read user
 zfs create -o mountpoint=/home/${user} ${POOL}/home/${user}
 useradd -d /home/${user} -G wheel ${user}
-#cp /etc/skel/.bash* /home/${user}
-#chmod 700 /home/${user}
-#chown -R ${user}:${user} /home/${user}
+cp /etc/skel/.bash* /home/${user}
+chmod 700 /home/${user}
+chown -R ${user}:${user} /home/${user}
 
 passwd ${user}
 
