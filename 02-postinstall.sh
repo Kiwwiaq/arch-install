@@ -37,7 +37,7 @@ echo "Creating user..."
 echo "Select username: "
 read user
 zfs create -o mountpoint=/home/${user} ${POOL}/home/${user}
-useradd -m -d /home/${user} -G wheel ${user}
+useradd -d /home/${user} -G wheel ${user}
 #cp /etc/skel/.bash* /home/${user}
 #chmod 700 /home/${user}
 #chown -R ${user}:${user} /home/${user}
