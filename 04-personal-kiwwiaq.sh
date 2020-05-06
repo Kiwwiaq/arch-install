@@ -14,4 +14,8 @@ sudo pacman --noconfirm --needed -S deluge discord
 echo "Installing other tools..."
 sudo pacman --noconfirm --needed -S virtualbox
 
+# Enable installed services
 sudo systemctl enable teamviewerd
+
+# Copy menu configuration
+cp config_files/cinnamon-applications.menu ~/.config/menus/cinnamon-applications.menu
