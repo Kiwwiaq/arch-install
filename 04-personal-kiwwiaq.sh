@@ -8,7 +8,7 @@ pacaur --noconfirm --noedit -S teamviewer
 
 # Internet category software
 echo "Installing Internet software..."
-sudo pacman --noconfirm --needed -S deluge discord
+sudo pacman --noconfirm --needed -S deluge-gtk discord
 
 # Other tools
 echo "Installing other tools..."
