@@ -49,8 +49,8 @@ passwd ${user}
 echo "Installing AUR helper..."
 sudo -u ${user} git clone https://aur.archlinux.org/auracle-git.git /tmp/auracle-git
 sudo -u ${user} git clone https://aur.archlinux.org/pacaur.git /tmp/pacaur
-cd /tmp/auracle-git; sudo -u ${user} makepkg -si
-cd /tmp/pacaur; sudo -u ${user} makepkg -si
+cd /tmp/auracle-git; sudo -u ${user} makepkg -si --noconfirm --needed
+cd /tmp/pacaur; sudo -u ${user} makepkg -si --noconfirm --needed
 
 # Clone install scripts to user home directory
 sudo -u ${user} git clone https://github.com/Kiwwiaq/arch-install /home/${user}/arch-install

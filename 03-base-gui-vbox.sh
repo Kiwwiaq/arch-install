@@ -41,7 +41,7 @@ cat source/ms_win10_fonts.tar.gz.part* > ~/.cache/pacaur/ttf-ms-win10/ms_win10_f
 tar -xf ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts.tar.gz --directory ~/.cache/pacaur/ttf-ms-win10/
 mv ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts/* ~/.cache/pacaur/ttf-ms-win10/
 rmdir ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts
-cd ~/.cache/pacaur/ttf-ms-win10/; makepkg -si
+cd ~/.cache/pacaur/ttf-ms-win10/; makepkg -si --noconfirm --needed
 fc-cache -f
 
 # Enable services
