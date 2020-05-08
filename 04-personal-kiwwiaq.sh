@@ -16,7 +16,7 @@ sudo pacman --noconfirm --needed -S virtualbox
 
 # Games
 echo "Installing games..."
-sudo pacman --noconfirm --needed -S lutris
+sudo pacman --noconfirm --needed -S lutris steam
 
 # Enable installed services
 sudo systemctl enable teamviewerd
