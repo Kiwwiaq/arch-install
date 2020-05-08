@@ -35,6 +35,10 @@ pacaur --noconfirm --noedit -S hunspell-sk
 echo "Installing Sound & Video software..."
 sudo pacman --noconfirm --needed -S lollypop totem
 
+# Install MS Windows 10 fonts
+git clone https://aur.archlinux.org/ttf-ms-win10.git ~/.cache/pacaur/ttf-ms-win10
+
+
 # Enable services
 sudo systemctl enable lightdm.service
 sudo systemctl enable org.cups.cupsd.socket
