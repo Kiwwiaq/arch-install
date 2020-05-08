@@ -42,6 +42,7 @@ tar -xf ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts.tar.gz --directory ~/.cache/
 mv ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts/* ~/.cache/pacaur/ttf-ms-win10/
 rmdir ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts
 cd ~/.cache/pacaur/ttf-ms-win10/; makepkg -si
+fc-cache -f
 
 # Enable services
 sudo systemctl enable lightdm.service
