@@ -3,7 +3,7 @@ clear
 
 # Install basic GUI
 echo "Installing ibasic GUI..."
-sudo pacman --noconfirm --needed -S virtualbox-guest-utils xf86-video-vmware xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
+sudo pacman --noconfirm --needed -S virtualbox-guest-utils xf86-video-vmware lib32-vulkan-icd-loader xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
 
 # Common software
 echo "Installing common software..."
