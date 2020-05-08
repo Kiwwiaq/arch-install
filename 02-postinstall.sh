@@ -22,10 +22,12 @@ sed -i 's/^#FallbackNTP/FallbackNTP/' /etc/systemd/timesyncd.conf
 timedatectl set-timezone Europe/Bratislava
 timedatectl set-ntp true
 
-# ZFS repository
-printf "[archzfs]\nServer = http://archzfs.com/\$repo/x86_64" >> /etc/pacman.conf
+# Update repositories
+printf "[archzfs]\nServer = http://archzfs.com/\$repo/x86_64\n" >> /etc/pacman.conf
 pacman-key -r F75D9D76
 pacman-key --lsign-key F75D9D76
+printf "[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf
+pacman -Syy
 
 # Update sudo groups
 echo "Updating sudo groups..."
