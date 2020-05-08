@@ -14,6 +14,10 @@ sudo pacman --noconfirm --needed -S deluge discord
 echo "Installing other tools..."
 sudo pacman --noconfirm --needed -S virtualbox
 
+# Games
+echo "Installing games..."
+sudo pacman --noconfirm --needed -S lutris
+
 # Enable installed services
 sudo systemctl enable teamviewerd
 
