@@ -22,8 +22,6 @@ pacaur --noconfirm --noedit -S xboxdrv
 echo "Installing wine..."
 sudo pacman --noconfirm --needed -S wine-staging wine-mono wine_gecko
 
-# Themes
-# GTK and Cinnamon themes
 #sudo pacman --noconfirm --needed -S papirus-icon-theme
 # Fonts
 #ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
