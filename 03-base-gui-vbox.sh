@@ -37,10 +37,10 @@ sudo pacman --noconfirm --needed -S lollypop totem
 
 # Install MS Windows 10 fonts
 git clone https://aur.archlinux.org/ttf-ms-win10.git ~/.cache/pacaur/ttf-ms-win10
-cat source/ms_win10_fonts.tar.gz.part* > ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts.tar.gz
-tar -xf ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts.tar.gz --directory ~/.cache/pacaur/ttf-ms-win10/
-mv ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts/* ~/.cache/pacaur/ttf-ms-win10/
-rmdir ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts
+cat ~/arch-install-fonts/fonts.tar.gz.part* > ~/.cache/pacaur/ttf-ms-win10/fonts.tar.gz
+tar -xf ~/.cache/pacaur/ttf-ms-win10/fonts.tar.gz --directory ~/.cache/pacaur/ttf-ms-win10/
+mv ~/.cache/pacaur/ttf-ms-win10/fonts/* ~/.cache/pacaur/ttf-ms-win10/
+rmdir ~/.cache/pacaur/ttf-ms-win10/fonts
 cd ~/.cache/pacaur/ttf-ms-win10/; makepkg -si --noconfirm --needed
 fc-cache -f
 

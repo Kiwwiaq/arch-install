@@ -54,6 +54,7 @@ cd /tmp/pacaur; sudo -u ${user} makepkg -si --noconfirm --needed
 
 # Clone install scripts to user home directory
 sudo -u ${user} git clone https://github.com/Kiwwiaq/arch-install /home/${user}/arch-install
+sudo -u ${user} git clone https://github.com/Kiwwiaq/arch-install-fonts /home/${user}/arch-install-fonts
 
 # Cleanup
 rm -r /root/arch-install
