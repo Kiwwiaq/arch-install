@@ -22,5 +22,5 @@ sudo pacman --noconfirm --needed -S lutris steam
 sudo systemctl enable teamviewerd
 
 # Copy menu configuration
-mkdir ~/.config/menus/
+mkdir -p ~/.config/menus/
 cp config_files/cinnamon-applications.menu ~/.config/menus/cinnamon-applications.menu
