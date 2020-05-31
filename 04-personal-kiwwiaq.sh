@@ -3,8 +3,8 @@ clear
 
 # Administration category software
 echo "Installing Administration software..."
-sudo pacman --noconfirm --needed -S guake gnome-disk-utility openssh whdd lsscsi
-pacaur --noconfirm --noedit -S teamviewer
+sudo pacman --noconfirm --needed -S guake gnome-disk-utility openssh lsscsi
+pacaur --noconfirm --noedit -S teamviewer whdd
 
 # Internet category software
 echo "Installing Internet software..."
@@ -22,4 +22,5 @@ sudo pacman --noconfirm --needed -S lutris steam
 sudo systemctl enable teamviewerd
 
 # Copy menu configuration
+mkdir ~/.config/menus/
 cp config_files/cinnamon-applications.menu ~/.config/menus/cinnamon-applications.menu
