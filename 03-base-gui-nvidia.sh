@@ -3,7 +3,7 @@ clear
 
 # Install basic GUI
 echo "Installing ibasic GUI..."
-sudo pacman --noconfirm --needed -S nvidia lib32-vulkan-icd-loader xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
+sudo pacman --noconfirm --needed -S nvidia nvidia-settings lib32-vulkan-icd-loader xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon
 
 # Common software
 echo "Installing common software..."
