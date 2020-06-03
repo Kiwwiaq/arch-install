@@ -61,4 +61,9 @@ gsettings set org.cinnamon.desktop.interface gtk-theme 'Adapta-LightGreen'
 gsettings set org.cinnamon.desktop.wm.preferences theme 'Adapta-LightGreen'
 gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/Icetwigs.jpg'
 echo -e "[greeter]\ntheme-name = Adapta-LightGreen-Eta" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+
+# Other settings
 gsettings set org.gnome.Terminal.Legacy.Settings headerbar true
+mkdir -p ~/Pictures/Screenshot
+gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/$USER/Pictures/Screenshot/"
+
