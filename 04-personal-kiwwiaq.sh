@@ -25,3 +25,10 @@ sudo systemctl enable teamviewerd
 # Copy menu configuration
 mkdir -p ~/.config/menus/
 cp config_files/cinnamon-applications.menu ~/.config/menus/cinnamon-applications.menu
+
+# bashrc and CLI colors
+sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
+cp ~/.config_files/kiwwiaq/.bash* ~/
+
+# TODO
+# vimrc
