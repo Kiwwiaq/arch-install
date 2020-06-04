@@ -12,7 +12,7 @@ sudo pacman --noconfirm --needed -S deluge-gtk discord
 
 # Other tools
 echo "Installing other tools..."
-sudo pacman --noconfirm --needed -S virtualbox
+sudo pacman --noconfirm --needed -S virtualbox virtualbox-host-modules-arch
 pacaur --noconfirm --noedit brother-hlb2080dw
 
 # Games
