@@ -3,7 +3,7 @@ clear
 
 # Administration category software
 echo "Installing Administration software..."
-sudo pacman --noconfirm --needed -S guake gnome-disk-utility openssh lsscsi
+sudo pacman --noconfirm --needed -S guake gnome-disk-utility openssh lsscsi htop
 pacaur --noconfirm --noedit -S teamviewer whdd
 
 # Internet category software
