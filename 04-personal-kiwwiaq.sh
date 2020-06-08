@@ -8,7 +8,7 @@ pacaur --noconfirm --noedit -S teamviewer whdd
 
 # Internet category software
 echo "Installing Internet software..."
-sudo pacman --noconfirm --needed -S deluge-gtk discord
+sudo pacman --noconfirm --needed -S deluge-gtk discord firefox-ublock-origin
 
 # Other tools
 echo "Installing other tools..."
