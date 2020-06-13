@@ -18,6 +18,7 @@ pacaur --noconfirm --noedit brother-hlb2080dw
 # Games
 echo "Installing games..."
 sudo pacman --noconfirm --needed -S lutris steam
+pacaur --noconfirm --noedit proton-ge-custom-bin winetricks
 
 # Enable installed services
 sudo systemctl enable teamviewerd
