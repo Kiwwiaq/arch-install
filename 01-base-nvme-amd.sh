@@ -37,10 +37,13 @@ swapon /dev/zvol/rpool/swap
 echo "Resfreshing package repositories..."
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.old
 #rankmirrors -n 2 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
-#echo "Server = https://archive.archlinux.org/repos/2019/12/17/\$repo/os/\$arch/" > /etc/pacman.d/mirrorlist
+echo "Server = https://archive.archlinux.org/repos/2020/07/17/\$repo/os/\$arch/" > /etc/pacman.d/mirrorlist
 
-pacman-key -r DDF7DB817396A49B2A2723F7403BD972F75D9D76
-pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
+#pacman-key -r DDF7DB817396A49B2A2723F7403BD972F75D9D76
+#pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
+
+wget https://archzfs.com/archzfs.gpg
+pacman-key -a archzfs.gpg
 
 echo "Refreshing signatures..."
 pacman-key --refresh-keys
