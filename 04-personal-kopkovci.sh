@@ -3,22 +3,30 @@ clear
 
 # Administration category software
 echo "Installing Administration software..."
-sudo pacman --noconfirm --needed -S guake gnome-disk-utility openssh lsscsi htop
-pacaur --noconfirm --noedit -S teamviewer whdd
+sudo pacman --noconfirm --needed -S openssh lsscsi htop
+pacaur --noconfirm --noedit -S teamviewer
 
 # Internet category software
 echo "Installing Internet software..."
-sudo pacman --noconfirm --needed -S deluge-gtk discord firefox-ublock-origin nmap
+sudo pacman --noconfirm --needed -S firefox-ublock-origin
 
 # Other tools
-echo "Installing other tools..."
-sudo pacman --noconfirm --needed -S virtualbox virtualbox-host-modules-arch
-pacaur --noconfirm --noedit brother-hlb2080dw
+#echo "Installing other tools..."
+#sudo pacman --noconfirm --needed -S 
+#pacaur --noconfirm --noedit 
 
 # Games
-echo "Installing games..."
-sudo pacman --noconfirm --needed -S lutris steam
-pacaur --noconfirm --noedit proton-ge-custom-bin winetricks
+#echo "Installing games..."
+#sudo pacman --noconfirm --needed -S lutris steam
+#pacaur --noconfirm --noedit proton-ge-custom-bin winetricks
+
+# Localization
+echo "Installing Slovac localization..."
+#sed -i "s/#sk_SK.UTF-8/sk_SK.UTF-8/" /mnt/etc/locale.gen
+#arch-chroot /mnt localectl set-locale LANG="sk_SK.UTF-8"
+#arch-chroot /mnt locale-gen
+sudo pacman --noconfirm --needed -S cinnamon-translations
+pacaur --noconfirm --noedit mintlocale
 
 # Enable installed services
 sudo systemctl enable teamviewerd
