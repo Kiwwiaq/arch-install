@@ -8,7 +8,7 @@ pacaur --noconfirm --noedit -S teamviewer
 
 # Internet category software
 echo "Installing Internet software..."
-sudo pacman --noconfirm --needed -S firefox-ublock-origin
+sudo pacman --noconfirm --needed -S firefox-ublock-origin thunderbird-i18n-sk firefox-i18n-sk
 
 # Other tools
 #echo "Installing other tools..."
@@ -27,6 +27,7 @@ echo "Installing Slovac localization..."
 #arch-chroot /mnt locale-gen
 sudo pacman --noconfirm --needed -S cinnamon-translations
 pacaur --noconfirm --noedit mintlocale
+xdg-user-dirs-update --force
 
 # Enable installed services
 sudo systemctl enable teamviewerd
@@ -37,7 +38,7 @@ cp config_files/cinnamon-applications.menu ~/.config/menus/cinnamon-applications
 
 # bashrc and CLI colors
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
-cp ~/.config_files/kiwwiaq/.bash* ~/
+#cp ~/.config_files/kiwwiaq/.bash* ~/
 
 # TODO
 # vimrc
