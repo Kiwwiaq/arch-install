@@ -11,8 +11,8 @@ echo "Installing Internet software..."
 sudo pacman --noconfirm --needed -S firefox-ublock-origin thunderbird-i18n-sk firefox-i18n-sk
 
 # Other tools
-#echo "Installing other tools..."
-#sudo pacman --noconfirm --needed -S 
+echo "Installing other tools..."
+sudo pacman --noconfirm --needed -S pitivi
 #pacaur --noconfirm --noedit 
 
 # Games
