@@ -33,7 +33,7 @@ pacaur --noconfirm --noedit -S hunspell-sk
 
 # Audio & Video category software
 echo "Installing Sound & Video software..."
-sudo pacman --noconfirm --needed -S lollypop totem goobox
+sudo pacman --noconfirm --needed -S lollypop totem goobox gst-libav gst-plugins-ugly
 
 # Install MS Windows 10 fonts
 git clone https://aur.archlinux.org/ttf-ms-win10.git ~/.cache/pacaur/ttf-ms-win10
