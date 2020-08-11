@@ -33,3 +33,6 @@ cp ~/.config_files/kiwwiaq/.bash* ~/
 
 # TODO
 # vimrc
+
+# Batthe.NET
+sudo pacman --noconfirm --needed -S lib32-gnutls lib32-libldap lib32-libgpg-error lib32-sqlite lib32-libpulse
