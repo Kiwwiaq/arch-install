@@ -3,7 +3,7 @@ clear
 
 # Administration category software
 echo "Installing Administration software..."
-sudo pacman --noconfirm --needed -S openssh lsscsi htop
+sudo pacman --noconfirm --needed -S openssh lsscsi htop gnome-disk-utility
 pacaur --noconfirm --noedit -S teamviewer
 
 # Internet category software
