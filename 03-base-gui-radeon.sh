@@ -7,7 +7,7 @@ sudo pacman --noconfirm --needed -S mesa xf86-video-amdgpu vulkan-radeon libva-m
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer cifs-utils smartmontools dnsutils inetutils
+sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer cifs-utils smartmontools dnsutils inetutils ntfs-3g
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Eyecandy
