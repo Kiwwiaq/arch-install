@@ -7,7 +7,7 @@ sudo pacman --noconfirm --needed -S virtualbox-guest-utils xf86-video-vmware lib
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer
+sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer piper simple-scan
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Eyecandy
@@ -19,7 +19,7 @@ sudo pacman --noconfirm --needed -S gnome-calculator nautilus gedit gnome-screen
 
 # Graphics category software
 echo "Installing Graphics software..."
-sudo pacman --noconfirm --needed -S gthumb
+sudo pacman --noconfirm --needed -S gthumb gimp
 
 # Internet category software
 echo "Installing Internet software..."
@@ -33,7 +33,7 @@ pacaur --noconfirm --noedit -S hunspell-sk
 
 # Audio & Video category software
 echo "Installing Sound & Video software..."
-sudo pacman --noconfirm --needed -S lollypop totem
+sudo pacman --noconfirm --needed -S lollypop totem goobox
 
 # Install MS Windows 10 fonts
 git clone https://aur.archlinux.org/ttf-ms-win10.git ~/.cache/pacaur/ttf-ms-win10
