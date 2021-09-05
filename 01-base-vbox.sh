@@ -46,7 +46,7 @@ echo "Refreshing repositories..."
 pacman -Syy
 
 echo "Installing base os..."
-pacstrap /mnt base linux linux-firmware intel-ucode base-devel archzfs-linux grub efibootmgr vi wget git networkmanager
+pacstrap /mnt base linux linux-firmware intel-ucode base-devel zfs-linux grub efibootmgr vi wget git networkmanager
 
 echo "Generating /etc/fstab file..."
 genfstab -p /mnt >> /mnt/etc/fstab
