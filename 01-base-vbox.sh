@@ -40,7 +40,7 @@ echo "Refreshing signatures..."
 #pacman -S archlinux-keyring
 #curl -L https://archzfs.com/archzfs.gpg |  pacman-key -a -
 #curl -L https://git.io/JsfVS | xargs -i{} pacman-key --lsign-key {}
-pacman-key --refresh-keys
+#pacman-key --refresh-keys
 
 echo "Refreshing repositories..."
 pacman -Syy
