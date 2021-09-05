@@ -37,6 +37,8 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.old
 #echo "Server = https://archive.archlinux.org/repos/2019/12/17/\$repo/os/\$arch/" > /etc/pacman.d/mirrorlist
 
 echo "Refreshing signatures..."
+curl -L https://archzfs.com/archzfs.gpg |  pacman-key -a -
+curl -L https://git.io/JsfVS | xargs -i{} pacman-key --lsign-key {}
 pacman-key --refresh-keys
 
 echo "Refreshing repositories..."
