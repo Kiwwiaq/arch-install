@@ -46,7 +46,7 @@ wget https://archzfs.com/archzfs.gpg
 pacman-key -a archzfs.gpg
 
 echo "Refreshing signatures..."
-pacman-key --refresh-keys
+#pacman-key --refresh-keys
 
 echo "Refreshing repositories..."
 pacman -Syy
