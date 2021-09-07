@@ -7,7 +7,7 @@ sudo pacman --noconfirm --needed -S nvidia nvidia-settings lib32-nvidia-utils li
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer cifs-utils smartmontools dnsutils inetutils ntfs-3g
+sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer piper simple-scan
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Eyecandy
@@ -39,8 +39,8 @@ sudo pacman --noconfirm --needed -S lollypop totem goobox
 git clone https://aur.archlinux.org/ttf-ms-win10.git ~/.cache/pacaur/ttf-ms-win10
 cat ~/arch-install-fonts/fonts.tar.gz.part* > ~/.cache/pacaur/ttf-ms-win10/fonts.tar.gz
 tar -xf ~/.cache/pacaur/ttf-ms-win10/fonts.tar.gz --directory ~/.cache/pacaur/ttf-ms-win10/
-mv ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts/* ~/.cache/pacaur/ttf-ms-win10/
-rmdir ~/.cache/pacaur/ttf-ms-win10/ms_win10_fonts
+mv ~/.cache/pacaur/ttf-ms-win10/fonts/* ~/.cache/pacaur/ttf-ms-win10/
+rmdir ~/.cache/pacaur/ttf-ms-win10/fonts
 cd ~/.cache/pacaur/ttf-ms-win10/; makepkg -si --noconfirm --needed
 fc-cache -f
 
