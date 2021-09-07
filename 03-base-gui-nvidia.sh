@@ -19,7 +19,7 @@ sudo pacman --noconfirm --needed -S gnome-calculator nautilus gedit gnome-screen
 
 # Graphics category software
 echo "Installing Graphics software..."
-sudo pacman --noconfirm --needed -S gthumb
+sudo pacman --noconfirm --needed -S gthumb gimp
 
 # Internet category software
 echo "Installing Internet software..."
