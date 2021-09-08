@@ -60,7 +60,7 @@ sed -i "s/^rpool/#rpool/" /mnt/etc/fstab
 sed -i "s/zd0/zvol\/rpool\/swap/" /mnt/etc/fstab
 
 echo "Setting hostname..."
-echo "kopkovci-pc" > /mnt/etc/hostname
+echo "kiwwiaq-pc" > /mnt/etc/hostname
 
 echo "Setting timezone..."
 ln -sf /mnt/usr/share/zoneinfo/Europe/Bratislava /mnt/etc/localtime
