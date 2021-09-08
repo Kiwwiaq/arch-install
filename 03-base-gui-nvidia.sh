@@ -11,7 +11,7 @@ sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar g
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Eyecandy
-pacaur --noconfirm --noedit -S adapta-gtk-theme-colorpack
+pacaur --noconfirm --noedit -S adapta-gtk-theme-colorpack-joshaby-git nature-wallpapers
 
 # Accessories category software
 echo "Installing Accessories software..."
