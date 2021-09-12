@@ -7,7 +7,7 @@ sudo pacman --noconfirm --needed -S nvidia nvidia-settings lib32-nvidia-utils li
 
 # Common software
 echo "Installing common software..."
-sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer piper simple-scan
+sudo pacman --noconfirm --needed -S vim xdg-utils xdg-user-dirs unzip libunrar gnome-terminal gnome-keyring cups system-config-printer piper smbclient
 pacaur --noconfirm --noedit -S vi-vim-symlink
 
 # Eyecandy
@@ -28,7 +28,7 @@ pacaur --noconfirm --noedit -S skypeforlinux-stable-bin
 
 # Office category software
 echo "Installing Office software..."
-sudo pacman --noconfirm --needed -S libreoffice-fresh evince
+sudo pacman --noconfirm --needed -S libreoffice-fresh evince simple-scan
 pacaur --noconfirm --noedit -S hunspell-sk
 
 # Audio & Video category software
