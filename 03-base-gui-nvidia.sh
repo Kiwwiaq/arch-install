@@ -3,7 +3,7 @@ clear
 
 # Install basic GUI
 echo "Installing ibasic GUI..."
-sudo pacman --noconfirm --needed -S nvidia nvidia-settings lib32-nvidia-utils lib32-vulkan-icd-loader xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon libva-utils libva-vdpau-driver
+sudo pacman --noconfirm --needed -S nvidia nvidia-settings lib32-nvidia-utils lib32-vulkan-icd-loader xorg-server lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon libva-utils libva-vdpau-driver vdpauinfo libvdpau-va-gl
 
 # Common software
 echo "Installing common software..."
